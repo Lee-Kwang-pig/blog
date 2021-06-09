@@ -78,8 +78,14 @@ WSGI_APPLICATION = 'blog.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'blog',
+        'HOST': 'localhost',
+        'PORT': 3306,
+        'USER': 'zcz',
+        'PASSWORD': '123',
+        'CHARSET': 'utf8',
+        'TIME_ZONE': 'Asia/Shanghai',
     }
 }
 
@@ -108,7 +114,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'zh-hans'
 
-TIME_ZONE = 'Asia-Shanghai'
+TIME_ZONE = 'Asia/Shanghai'
 
 USE_I18N = True
 

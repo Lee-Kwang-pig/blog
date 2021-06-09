@@ -1,0 +1,6 @@
+# Django
+.idea
+db.sqlite*
+
+# __cache__
+_*cache__
