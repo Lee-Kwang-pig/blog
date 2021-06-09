@@ -1,0 +1,121 @@
+/* 通用 */
+*{
+    box-sizing: border-box;
+}
+
+a{
+    text-decoration: none;
+    color: #2f2f2f;
+}
+a:hover{
+    color: rgba(236,173,158,.8);
+    /*font-weight: bold;*/
+}
+
+#header, #footer{
+    background-color: #afb0b2;
+}
+
+
+/* header */
+#header{
+    text-align: center;
+    /*margin-bottom: 30px;*/
+}
+#header::after{
+    content: '';
+    clear: both;
+    display: block;
+}
+#main-nav, .search{
+    padding: 20px 20px;
+}
+#main-nav{
+    float: left;
+}
+.search{
+    float: right;
+    margin-right: 50px;
+}
+.main-nav-link{
+    margin-left: 20px;
+    font-size: 18px;
+}
+
+
+/* footer */
+#footer-info{
+    padding: 10px 10px;
+    margin-left: 10px;
+}
+
+
+/* outer 文章展示区域 以及 右边栏区域 */
+#container{
+    background-color: rgba(214,213,183,.3);
+}
+.outer{
+    margin-top: 30px;
+}
+.outer::after{
+    content: '';
+    clear: both;
+    display: table;
+}
+#main,#sidebar{
+    float: left;
+}
+.article-inner, #page-nav,
+.widget-wrap > .widget{
+    background-color: white;
+}
+
+
+/* 右边栏 */
+#sidebar{
+    width: 20%;
+    /*border: 1px red solid;*/
+    float: left;
+    padding-left: 10px;
+    padding-right: 40px;
+}
+.widget{
+    margin-bottom: 20px;
+    padding: 10px 0;
+}
+
+.widget li{
+    margin-bottom: 10px;
+    list-style-type: none;
+}
+
+
+/* 文章展示区 */
+#main{
+    width: 80%;
+    padding: 20px 30px;
+    /*border: 1px orange solid;*/
+}
+.article-inner{
+    padding-left: 20px;
+    padding-right: 10px;
+    padding-bottom: 1px;
+    margin-bottom: 40px;
+}
+.article-tag-list-item{
+    font-size: 14px;
+    color: blanchedalmond;
+    margin-right: 30px;
+    list-style-type: none;
+}
+
+/* 分页 */
+#page-nav{
+    text-align: center;
+    padding: 20px 20px
+}
+
+#page-nav > a {
+    margin-left: 30px;
+    margin-right: 30px;
+}

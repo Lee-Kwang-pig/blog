@@ -1,0 +1,54 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<!--
+    1 首页展示
+    2 帖子分类
+    3 帖子归档
+    4 近期文章
+    5 关于博主
+    6 全文搜索
+    7 发布帖子
+-->
+    <meta charset="UTF-8">
+    <meta http-equiv="content-type" content="text/html">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'normalize.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'myblog/style.css' %}">
+    {% block headerjs %}
+
+    {% endblock %}
+</head>
+<body>
+    <div id="container">
+        <div id="wrap">
+        <!--
+            <header id="header"></header>
+        -->
+            {% include 'myblog/_header.html' %}
+
+            <div class="outer">
+            <!--
+                <div id="left"> // 左边 页面经常变化
+                </div>
+            -->
+                {% block left %}
+
+                {% endblock %}
+
+            <!--
+                <aside id="right"> // 右边  页面不长变化
+                </aside>
+            -->
+                {% include 'myblog/_righter.html' %}
+            </div>
+
+        <!--
+            <footer id="footer"></footer>
+        -->
+            {% include 'myblog/_footer.html' %}
+        </div>
+    </div>
+</body>
+</html>
