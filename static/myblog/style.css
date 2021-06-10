@@ -16,16 +16,19 @@ a:hover{
     background-color: #afb0b2;
 }
 
+#header::after,
+.outer::after,
+.article-tag-list::after,
+#page-nav::after{
+    content: '';
+    clear: both;
+    display: block;
+}
 
 /* header */
 #header{
     text-align: center;
     /*margin-bottom: 30px;*/
-}
-#header::after{
-    content: '';
-    clear: both;
-    display: block;
 }
 #main-nav, .search{
     padding: 20px 20px;
@@ -56,11 +59,6 @@ a:hover{
 }
 .outer{
     margin-top: 30px;
-}
-.outer::after{
-    content: '';
-    clear: both;
-    display: table;
 }
 #main,#sidebar{
     float: left;
@@ -103,19 +101,35 @@ a:hover{
     margin-bottom: 40px;
 }
 .article-tag-list-item{
+    float: left;
     font-size: 14px;
-    color: blanchedalmond;
     margin-right: 30px;
     list-style-type: none;
 }
 
+
 /* 分页 */
 #page-nav{
     text-align: center;
-    padding: 20px 20px
+    line-height: 50px;
 }
-
-#page-nav > a {
+#page-nav > .page-number {
     margin-left: 30px;
     margin-right: 30px;
+}
+#page-nav > .extend{
+    line-height: 50px;
+    height: 50px;
+    width: 100px;
+    background-color: #ddd;
+
+}
+#page-nav > .next{
+    float: right;
+}
+#page-nav > .prev{
+    float: left;
+}
+#page-nav > .current{
+    font-weight: bold;
 }

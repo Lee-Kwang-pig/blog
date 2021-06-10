@@ -1,4 +1,5 @@
 from django.db import models
+from ckeditor_uploader.fields import RichTextUploadingField
 
 
 class Category(models.Model):
@@ -42,7 +43,7 @@ class Article(models.Model):
     """"文章模型"""
     title = models.CharField('文章标题', max_length=100, unique=True)
     description = models.CharField('描述', max_length=100, default='暂无相关描述')
-    content = models.TextField('内容')
+    content = RichTextUploadingField('内容', null=True, blank=True)
     pub_date = models.DateTimeField('发布期日', auto_now_add=True)
     category = models.ForeignKey(Category, on_delete=models.CASCADE, verbose_name='类型')
     author = models.ForeignKey(Author, on_delete=models.CASCADE, verbose_name='作者')

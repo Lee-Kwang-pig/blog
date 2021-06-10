@@ -6,15 +6,22 @@
 
 {% block left %}
     <div id="main">
+
+        {% for article in article_list %}
+
         <article class="article">
             <!-- 文章蓝框上面的信息 -->
             <div class="article-meta">
-                <a class="article-date" href="#">
-                    <time>2021-06-08</time>
-                </a>
-                &nbsp;&nbsp;&nbsp;
+                <span class="article-date" href="#">
+                    <time>{{ article.pub_date|date:'Y-m-d H:i:s' }}</time>
+                </span>
+                &nbsp;&nbsp;&nbsp;&nbsp;
                 <span class="article-category">
-                    <a class="article-category-link" href="#" target="_blank">后端</a>
+                    <a class="article-category-link" href="#" target="_blank">{{ article.category.cname }}</a>
+                </span>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <span class="article-author">
+                    <a class="article-author-link" href="#" target="_blank">{{ article.author.name }}</a>
                 </span>
             </div>
 
@@ -22,38 +29,54 @@
             <div class="article-inner">
                 <header class="article-header">
                     <h1 itemprop="name">    <!--声明属性名，加在要声明的元素中;用做 DOM标记-->
-                        <a class="article-title" href="#" target="_blank">T1</a>
+                        <a class="article-title" href="#" target="_blank">{{ article.title }}</a>
                     </h1>
                 </header>
                 <div class="article-entry" itemprop="articleBody">
                     <h2>前言</h2>
+                    {{ article.description }}
                     <hr>
-                    &lt;p&gt;img alt='' sr...
-
                     <p class="article-more-link">
-                        <a href="#" target="_blank">阅读全文</a>
+                        <a href="/article_{{ article.id }}/details/" target="_blank">阅读全文</a>
                     </p>
                 </div>
                 <footer class="article-footer">
                     <a href="#" data-url="存放文章的url" class="article-share-link">分享</a>
                     <hr>
                     <ul class="article-tag-list">
+
+                        {% for tag in article.tag.all %}
+
                         <li class="article-tag-list-item">
-                            <a class="article-tag-list-link" href="#"># Python</a>
+                            <a class="article-tag-list-link" href="#"># {{ tag.tname }}</a>
                         </li>
+
+                        {% endfor %}
+
                     </ul>
                 </footer>
             </div>
         </article>
 
+        {% endfor %}
+
         <!-- 分页栏 -->
         <nav id="page-nav">
-            <a class="page-number current">1</a>
-            <a class="page-number" href="#">2</a>
-            <a class="page-number" href="/#">3</a>
-            <a class="page-number" href="/#">4</a>
-            <a class="page-number" href="/#">5</a>
-            <a class="extend next" rel="next" href="#">Next >>> </a>
+        {% if article_list.has_previous %}
+            <a class="extend prev" rel="next" href="/page/{{ article_list.previous_page_number }}"><<< prev</a>
+        {% endif %}
+
+            {% for page in page_list %}
+                {% if current_page == page %}
+                    <span class="page-number current">{{ current_page }}</span>
+                {% else %}
+                    <a class="page-number" href="/page/{{ page }}">{{ page }}</a>
+                {% endif %}
+            {% endfor %}
+
+        {% if article_list.has_next %}
+            <a class="extend next" rel="next" href="/page/{{ article_list.next_page_number }}">Next >>> </a>
+        {% endif %}
         </nav>
     </div>
 {% endblock %}

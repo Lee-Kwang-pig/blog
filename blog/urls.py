@@ -15,8 +15,15 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from blog.settings import DEBUG, MEDIA_ROOT
+from django.views.static import serve
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('myblog.urls')),
+    path(r'ckeditor/', include('ckeditor_uploader.urls'))
 ]
+
+if DEBUG:
+    urlpatterns += path(r'^media/(?P<path>.*)/$', serve, {"document_root": MEDIA_ROOT}),

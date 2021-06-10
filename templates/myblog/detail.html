@@ -1,0 +1,42 @@
+{% extends 'myblog/base.html' %}
+{% load filter_mark %}
+
+{% block title %}
+内容详情
+{% endblock %}
+
+{% block left %}
+    <div id="main">
+        <article class="article">
+            <!-- 文章蓝框上面的信息 -->
+            <div class="article-meta">
+                <span class="article-date" href="#">
+                    <time>{{ article.pub_date|date:'Y-m-d H:i:s' }}</time>
+                    <time>{{ article.pub_date|date:'Y-m-d H:i:s' }}</time>
+                </span>
+                <span class="article-category">
+                    <a class="article-category-link" href="#" target="_blank">{{ article.category.cname }}</a>
+                </span>
+                <span class="article-author">
+                    <a class="article-author-link" href="#" target="_blank">{{ article.author.name }}</a>
+                </span>
+            </div>
+
+            <div class="article-inner">
+                <header class="article-header">
+                    <h1 itemprop="name">    <!--声明属性名，加在要声明的元素中;用做 DOM标记-->
+                        <a class="article-title" href="#" target="_blank">{{ article.title }}</a>
+                    </h1>
+                </header>
+                <div class="article-entry" itemprop="articleBody">
+                    <h2>前言</h2>
+                    {{ article.description }}
+                    <hr>
+                    <p class="article-more-link">
+                        {{ article.content|md|safe }}
+                    </p>
+                </div>
+            </div>
+        </article>
+    </div>
+{% endblock %}
